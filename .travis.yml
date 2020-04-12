@@ -1,0 +1,22 @@
+# Filename: .travis.yml
+
+language: python
+python:
+  - "3.4"
+os: linux
+dist: xenial
+
+# Install the codecov pip dependency
+install:
+  - pip install codecov
+  - pip install travis-sphinx
+
+# command to run tests
+script:
+  - make cover
+  - travis-sphinx build --source=doc/source
+
+# Push the results back to codecov
+after_success:
+  - codecov
+  - travis-sphinx deploy
