@@ -1,0 +1,19 @@
+# Filename: .gitignore
+
+# Python
+*.py[cod]
+
+# IPython
+.ipynb*
+
+# Documentation
+build/**
+
+# Tests
+.coverage
+cover
+
+# Packages
+*.egg
+*.egg-info
+dist
