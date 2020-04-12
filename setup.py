@@ -58,7 +58,7 @@ MYEDA_PKGS = [
 ]
 
 TEST_PKGS = [
-    'myeda.test',
+    'vcd2wavedrom.test',
 ]
 
 PACKAGES = MYEDA_PKGS + TEST_PKGS
