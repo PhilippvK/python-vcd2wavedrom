@@ -6,7 +6,7 @@ class VCD2Wavedrom(object):
     """This class converts waveforms in a JSON format\
  to be parsed by Wavedrom."""
 
-    def __init__(self, vcd):
+    def __init__(self, vcd, title="Simulation Waveform"):
         self.vcd = vcd
         self.ticks = None
         self.timeline = None
@@ -14,6 +14,7 @@ class VCD2Wavedrom(object):
         self.step_size = None
         self.steps = None
         self.waves = None
+        self.title = title
 
     def get_waves(self):
         """Fills the list of waves."""
@@ -35,24 +36,26 @@ class VCD2Wavedrom(object):
 
     def build_json(self):
         """Returns string that can be intepreted by Wavedrom."""
-        title = "Simulation Waveform"
 
         output = ""
 
         output = output + """{
-    signal: [\n"""
+    "signal": [\n"""
 
         for i, variable in enumerate(self.variables.values()):
             output = output + \
-                "\t\t{{ name: '{}',\twave: '{}' }},\n".format(
+                '\t\t{{ "name": "{}",\t"wave": "{}" }}'.format(
                     variable, self.waves[i])
+            if i < len(self.variables.values()) - 1:
+                output = output + ','
+            output = output + '\n'
 
         output = output + """    ],
-    head: {{
-        text: '{}',
-        tick: {},
-    }},
-}}""".format(title, self.ticks[0]//self.step_size)
+    "head": {{
+        "text": "{}",
+        "tick": {}
+    }}
+}}""".format(self.title, self.ticks[0]//self.step_size)
 
         return output
 
