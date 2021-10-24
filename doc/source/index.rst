@@ -1,7 +1,7 @@
 .. index.rst
 
 Python VCD2Wavedrom Documentation
-========================
+=================================
 
 :Release: |version|
 :Date: |today|

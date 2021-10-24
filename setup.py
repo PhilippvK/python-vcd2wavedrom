@@ -7,15 +7,15 @@ try:
 except ImportError:
     from distutils.core import setup, Extension
 
-NAME = vcd2wavedrom.__name__
+NAME = "vcd2wavedrom"
 
-VERSION = vcd2wavedrom.__version__
+VERSION = "0.0.1"
 
 AUTHOR = "Philipp van Kempen"
 
 AUTHOR_EMAIL = "philipp DOT van DASH kempen AT tum DOT de"
 
-DESCRIPTION = "Electronic Design Automation Helper Scripts making use of cjdrake/pyeda and tpircher/quine-mccluskey"
+DESCRIPTION = "TODO"
 
 KEYWORDS = [
     "EDA",
@@ -36,9 +36,9 @@ with open('README.md') as fin:
 with open('LICENSE') as fin:
     LICENSE = fin.read()
 
-URL = "https://github.com/PhilippvK/eda-playground/myEDA"
+URL = "https://github.com/PhilippvK/python-vcd2wavedrom"
 
-DOWNLOAD_URL = "https://github.com/PhilippvK/eda-playground/releases"
+DOWNLOAD_URL = "https://github.com/PhilippvK/vcd2wavedrom/releases"
 
 CLASSIFIERS = [
     "License :: OSI Approved :: MIT License",
@@ -54,7 +54,7 @@ MYEDA_PKGS = [
 ]
 
 TEST_PKGS = [
-    'myeda.test',
+    'tests',
 ]
 
 PACKAGES = MYEDA_PKGS + TEST_PKGS
@@ -68,6 +68,7 @@ install_requires=[
 #   'termcolor>=1.1.0',
 #   'pyeda>=0.28.0',
 #   'quine-mccluskey @ https://github.com/tpircher/quine-mccluskey',
+    'wavedrom>=2.0.3.post2',
 ]
 
 setup(
@@ -82,10 +83,11 @@ setup(
     url=URL,
     download_url=DOWNLOAD_URL,
     classifiers=CLASSIFIERS,
-    packages=PACKAGES,
-    ext_modules=EXT_MODULES,
-    scripts=SCRIPTS,
+    #packages=PACKAGES,
+    #ext_modules=EXT_MODULES,
+    #scripts=SCRIPTS,
     test_suite='nose.collector',
     python_requires='>=3.5',
     install_requires=install_requires,
+    py_modules=['vcd2wavedrom'],
 )
